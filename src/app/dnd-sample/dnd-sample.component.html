@@ -1,0 +1,19 @@
+<div #buildercontainer class="builder-container" cdkDropListGroup>
+    <div cdkDropList *ngFor="let idxArr of listIndexes; let listIdx = index;" class="dnd-list"
+        cdkDropListData="{{listIdx}}"
+        cdkDropListOrientation="horizontal" (cdkDropListDropped)="dropListDropped($event)">
+        <div #piecebox cdkDrag class="piece-box" [ngStyle]="{'margin-right.px': chipMargin}"
+            *ngFor="let idx of idxArr; let i = index">
+            <mat-chip removable="true" (removed)="removeChip(i)">
+                <div class="chip-container">
+                    <div class="chip-item">
+                        {{ pathList.controls[idx]['controls'].name.value }}
+                    </div>
+                    <div class="chip-item">
+                        <mat-icon matChipRemove>cancel</mat-icon>
+                    </div>
+                </div>
+            </mat-chip>
+        </div>
+    </div>
+</div>
